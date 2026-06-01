@@ -6,10 +6,11 @@
     <title>CV - Nguyễn Phương Thảo</title>
     <style>
         :root {
-            --primary-color: #552744; /* Màu tím sẫm lấy từ ảnh */
-            --bg-color: #f4f3f5; /* Màu nền xám nhạt */
+            --primary-color: #552744; 
+            --bg-color: #f4f3f5; 
             --text-color: #333333;
             --line-color: #552744;
+            --hover-color: #7a3861; /* Màu tím nhạt hơn khi hover */
         }
 
         body {
@@ -26,33 +27,36 @@
             width: 100%;
             max-width: 950px;
             background-color: var(--bg-color);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             display: flex;
             flex-direction: row;
+            overflow: hidden; /* Để hiệu ứng mượt hơn */
+            border-radius: 10px;
         }
 
+        /* --- CỘT TRÁI --- */
         .left-column {
             width: 35%;
             padding: 40px 30px;
             box-sizing: border-box;
             background-color: #f4f3f5;
+            border-right: 1px solid #e0e0e0;
         }
 
-        /* --- ĐOẠN CSS THÊM CHO AVATAR --- */
         .avatar {
             width: 130px;
             height: 130px;
-            border-radius: 50%; /* Cắt ảnh thành hình tròn */
-            object-fit: cover; /* Tránh làm móp méo ảnh */
+            border-radius: 50%;
+            object-fit: cover;
             margin-bottom: 20px;
-            border: 3px solid var(--primary-color); /* Tạo viền màu tím cùng tông CV */
+            border: 3px solid var(--primary-color);
             display: block;
+            transition: transform 0.4s ease, box-shadow 0.4s ease; /* Hiệu ứng động cho avatar */
         }
 
-        .right-column {
-            width: 65%;
-            padding: 40px 40px 40px 20px;
-            box-sizing: border-box;
+        .avatar:hover {
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: 0 8px 15px rgba(85, 39, 68, 0.3);
         }
 
         h1 {
@@ -70,10 +74,6 @@
             color: #444;
         }
 
-        .contact-info p {
-            margin: 5px 0;
-        }
-
         .section-title {
             font-size: 18px;
             color: var(--primary-color);
@@ -83,6 +83,7 @@
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 8px;
             font-weight: 800;
+            position: relative;
         }
 
         ul.skills-list {
@@ -96,191 +97,13 @@
         ul.skills-list li {
             margin-bottom: 15px;
             color: #333;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        ul.skills-list li:hover {
+            color: var(--hover-color);
+            transform: translateX(5px); /* Trượt nhẹ sang phải khi di chuột */
         }
 
         .bold-text {
-            font-weight: bold;
-            color: var(--text-color);
-        }
-
-        .objective-text {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            text-align: justify;
-        }
-
-        /* Bố cục Timeline cho Kinh nghiệm và Hoạt động */
-        .timeline {
-            border-left: 2px solid var(--line-color);
-            margin-left: 8px;
-            padding-left: 25px;
-            margin-bottom: 40px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 30px;
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Bullet vuông giống thiết kế trong ảnh */
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -32px;
-            top: 4px;
-            width: 10px;
-            height: 10px;
-            background-color: var(--primary-color);
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 8px;
-        }
-
-        .item-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 15px;
-            max-width: 75%;
-        }
-
-        .item-date {
-            font-size: 12px;
-            color: #666;
-            white-space: nowrap;
-        }
-
-        .item-desc {
-            font-size: 13.5px;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .item-subtext {
-            font-size: 13px;
-            font-style: italic;
-            margin-top: 5px;
-            color: #555;
-        }
-
-        @media (max-width: 768px) {
-            .resume-container {
-                flex-direction: column;
-            }
-            .left-column, .right-column {
-                width: 100%;
-                padding: 30px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="resume-container">
-        <div class="left-column">
-            <img src="avatar.jpg" alt="Nguyễn Phương Thảo" class="avatar">
-            
-            <h1>Nguyễn Phương Thảo</h1>
-            <div class="contact-info">
-                <p><strong>Email:</strong> npthaor105@gmail.com</p>
-            </div>
-
-            <div class="section-title">EDUCATION</div>
-            <ul class="skills-list" style="list-style-type: none; padding-left: 0;">
-                <li style="margin-bottom: 10px;">
-                    <span class="bold-text">University Student</span><br>
-                    Major: Business Law & International Contracts
-                </li>
-            </ul>
-
-            <div class="section-title">SKILLS</div>
-            <ul class="skills-list">
-                <li><span class="bold-text">Teamwork:</span> School study groups, clubs</li>
-                <li><span class="bold-text">Office Software:</span> Google Docs, Sheets, Microsoft Word, Excel,...</li>
-                <li><span class="bold-text">Data Analysis:</span> Python (pandas, Jupyter Lab, Google Colab)</li>
-                <li><span class="bold-text">Organization:</span> Planning and organizing events with the team.</li>
-                <li><span class="bold-text">Communication:</span> Collaborating and liaising with sponsors/partners.</li>
-            </ul>
-
-            <div class="section-title">LANGUAGES</div>
-            <ul class="skills-list">
-                <li><span class="bold-text">English:</span> IELTS 7.5 overall</li>
-                <li><span class="bold-text">Mandarin Chinese:</span> Conversational & HSKK Preparation</li>
-            </ul>
-        </div>
-
-        <div class="right-column">
-            <div class="section-title">OBJECTIVE</div>
-            <div class="objective-text">
-                My goal is to join a supportive and professional team. I believe that an open, respectful, and collaborative environment will help me reach my full potential and make a meaningful impact on the company's growth.
-            </div>
-
-            <div class="section-title">ACTIVITIES</div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <div class="item-title">Import Intern, 4TEK Industrial Solutions Joint Stock Company</div>
-                        <div class="item-date">07/2025 - 08/2025</div>
-                    </div>
-                    <div class="item-desc">
-                        Reviewed, verified, and organized documents. Drafted correspondence using templates; assisted with partner reception and logistical tasks to ensure smooth operations.
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <div class="item-title">Deputy Leader, Hawaiiu. Bracelet Business Project</div>
-                        <div class="item-date">03/2025 - 05/2025</div>
-                    </div>
-                    <div class="item-desc">
-                        Assumed the role of Deputy Leader. Co-managed the project operations, assigned tasks, and supervised the team's work quality. Directly in charge of media design and budget management.
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <div class="item-title">Media Team Member, CSP Cooking Trendsetters Club</div>
-                        <div class="item-date">08/2022 - 06/2023</div>
-                    </div>
-                    <div class="item-desc">
-                        Brainstormed and designed media materials in collaboration with the content team. Coordinated culinary events and managed attendee support to ensure a professional experience.
-                    </div>
-                    <div class="item-subtext">Software used: Canva, Adobe Illustrator</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <div class="item-title">External Relations Team Member, CSP Debate Society</div>
-                        <div class="item-date">08/2022 - 06/2023</div>
-                    </div>
-                    <div class="item-desc">
-                        Approached, negotiated with, and managed the sponsor network to ensure optimal value for partners. Planned and organized networking events and debate competitions.
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-title">RESEARCH EXPERIENCE</div>
-            <div class="timeline" style="margin-bottom: 0;">
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <div class="item-title">Participate in scientific research</div>
-                        <div class="item-date">08/2025 - 04/2026</div>
-                    </div>
-                    <div class="item-desc">
-                        Participated in 2 research projects on "AI Sycophancy" and "AI Personalization". Handled the qualitative research and content comprehensively: built the theoretical framework, formulated hypotheses, interpreted data analysis results, and directly authored practical recommendations for businesses and regulatory agencies. Ensure adherence to defined <i>competence</i> frameworks.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
+            font-weight:
