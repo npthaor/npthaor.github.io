@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Nguyễn Phương Thảo</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Hỗ trợ Tiếng Việt cực tốt với Montserrat (Tiêu đề) và Nunito (Văn bản) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sidebar-bg: #2a1124; /* Tím than đậm cực sang */
-            --main-bg: #fdfbfd; /* Trắng ánh tím nhẹ */
-            --primary-color: #6d2e63; 
-            --accent-color: #d4af37; /* Vàng kim */
+            /* Tone màu chủ đạo: Tím huyền bí & Vàng kim */
+            --primary-color: #5b2a54; 
+            --accent-color: #d4af37; 
+            --bg-gradient: linear-gradient(135deg, #f7eef7 0%, #e8dae9 100%);
+            --glass-bg: rgba(255, 255, 255, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.4);
             --text-dark: #2d1630;
-            --text-light: #6a5a6b;
+            --text-light: #5a4b5c;
             --white: #ffffff;
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
@@ -30,53 +32,117 @@
         }
 
         body {
-            background-color: var(--main-bg);
+            background: var(--bg-gradient);
             color: var(--text-dark);
-            line-height: 1.7;
-            display: flex;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, .nav-links a, .exp-title, .skill-title {
+        h1, h2, h3, .logo, .exp-title, .skill-title {
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* ================= SIDEBAR CỐ ĐỊNH BÊN TRÁI ================= */
-        .sidebar {
-            width: 35%;
-            height: 100vh;
-            background-color: var(--sidebar-bg);
+        /* --- BACKGROUND BỤI SAO LẤP LÁNH --- */
+        .stars-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            color: var(--white);
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.5;
+            animation: twinkle 25s linear infinite;
+        }
+
+        @keyframes twinkle {
+            from { background-position: 0 0; }
+            to { background-position: -1000px 500px; }
+        }
+
+        /* --- NAVBAR KÍNH MỜ --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255,255,255,0.8);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 15px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -5px; left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--primary-color); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* --- CHUNG CHO CÁC SECTION --- */
+        section {
+            padding: 120px 10% 80px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            color: var(--primary-color);
+            margin-bottom: 60px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* --- HERO SECTION --- */
+        #home {
             align-items: center;
-            padding: 40px;
-            z-index: 100;
-            box-shadow: 5px 0 25px rgba(0,0,0,0.2);
-        }
-
-        /* Avatar với hiệu ứng vòng sáng xoay */
-        .avatar-wrapper {
+            text-align: center;
             position: relative;
-            width: 160px;
-            height: 160px;
-            margin-bottom: 25px;
         }
 
-        .avatar-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -8px; left: -8px; right: -8px; bottom: -8px;
-            border: 2px dashed var(--accent-color);
-            border-radius: 50%;
-            animation: spin 15s linear infinite;
-        }
-
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
+        .avatar-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin-bottom: 30px;
         }
 
         .hero-avatar {
@@ -84,435 +150,383 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--sidebar-bg);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-            transition: var(--transition);
-        }
-
-        .hero-avatar:hover {
-            transform: scale(1.05);
-        }
-
-        .sidebar h1 {
-            font-size: 32px;
-            text-align: center;
-            margin-bottom: 10px;
-            color: var(--white);
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        /* Hiệu ứng gõ chữ */
-        .typewriter {
-            font-size: 16px;
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 30px;
-            min-height: 24px;
-        }
-
-        .cursor {
-            animation: blink 0.8s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .info-box {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            border-radius: 15px;
-            width: 100%;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-
-        .info-box p {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .info-box p:last-child { margin-bottom: 0; }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            text-align: center;
-            width: 100%;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: rgba(255,255,255,0.6);
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: var(--transition);
-            display: block;
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-            background: rgba(212, 175, 55, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* ================= PHẦN NỘI DUNG CHÍNH BÊN PHẢI ================= */
-        .main-content {
-            margin-left: 35%;
-            width: 65%;
-            padding: 0;
-        }
-
-        section {
-            padding: 80px 10%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .section-title {
-            font-size: 40px;
-            color: var(--primary-color);
-            margin-bottom: 40px;
+            border: 4px solid var(--white);
+            box-shadow: 0 15px 35px rgba(91, 42, 84, 0.2);
             position: relative;
-            display: inline-block;
+            z-index: 2;
+            animation: float 4s ease-in-out infinite;
         }
 
-        .section-title::after {
-            content: '';
+        .avatar-glow {
             position: absolute;
-            left: 0; bottom: -10px;
-            width: 50%; height: 4px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-            transition: width 0.4s ease;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%; height: 110%;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+            opacity: 0.5;
+            z-index: 1;
+            animation: pulse 3s infinite alternate;
         }
 
-        section:hover .section-title::after { width: 100%; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.3; }
+            100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.7; }
+        }
 
-        /* --- ABOUT --- */
-        .objective-text {
-            font-size: 18px;
-            color: var(--text-light);
+        .hero-title {
+            font-size: 56px;
+            background: linear-gradient(to right, var(--primary-color), #8a487f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .hero-education {
+            font-size: 17px;
+            color: var(--primary-color);
+            font-weight: 700;
             line-height: 1.8;
-            font-weight: 600;
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border-left: 5px solid var(--primary-color);
+            margin-bottom: 20px;
         }
 
-        /* --- SKILLS --- */
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 650px;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(45deg, var(--primary-color), #7a3861);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(91, 42, 84, 0.3);
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(91, 42, 84, 0.5);
+            border-color: var(--accent-color);
+        }
+
+        /* --- SKILLS SECTION (GLASSMORPHISM) --- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
         }
 
         .skill-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.02);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
             transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
-            z-index: 1;
         }
 
         .skill-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--primary-color);
-            z-index: -1;
-            transform: scaleY(0);
-            transform-origin: bottom;
-            transition: transform 0.4s ease;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            transition: 0.6s;
         }
+
+        .skill-card:hover::before { left: 100%; }
 
         .skill-card:hover {
-            transform: translateY(-8px);
-            color: var(--white);
-            box-shadow: 0 15px 30px rgba(109, 46, 99, 0.2);
-        }
-
-        .skill-card:hover::before { transform: scaleY(1); }
-
-        .skill-card:hover .skill-title, 
-        .skill-card:hover .skill-desc {
-            color: var(--white);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(91, 42, 84, 0.15);
+            border-color: var(--accent-color);
         }
 
         .skill-title {
             font-size: 20px;
             color: var(--primary-color);
+            font-weight: 800;
             margin-bottom: 15px;
-            transition: var(--transition);
         }
 
-        .skill-desc {
-            color: var(--text-light);
-            font-size: 15px;
-            transition: var(--transition);
-        }
-
-        /* --- EXPERIENCE TIMELINE MỚI --- */
+        /* --- EXPERIENCE SECTION (TIMELINE NEON) --- */
         .timeline {
             position: relative;
-            padding-left: 40px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .timeline::before {
+        .timeline::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 2px; height: 100%;
-            background: rgba(109, 46, 99, 0.2);
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            top: 0; bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
         }
 
         .timeline-item {
+            padding: 10px 50px;
             position: relative;
-            margin-bottom: 40px;
+            width: 50%;
         }
 
-        .timeline-item::before {
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+
+        .timeline-item::after {
             content: '';
             position: absolute;
-            top: 5px; left: -46px;
-            width: 14px; height: 14px;
-            background: var(--white);
-            border: 3px solid var(--accent-color);
+            width: 24px; height: 24px;
+            right: -12px;
+            background-color: var(--white);
+            border: 4px solid var(--accent-color);
+            top: 20px;
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+            z-index: 1;
             transition: var(--transition);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        .timeline-item:hover::before {
-            background: var(--accent-color);
+        .timeline-item:hover::after {
+            background-color: var(--accent-color);
             transform: scale(1.3);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
         }
 
-        .exp-content {
-            background: var(--white);
+        .timeline-item.right::after { left: -12px; }
+
+        .timeline-content {
             padding: 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.02);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.04);
             transition: var(--transition);
         }
 
-        .exp-content:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border-color: var(--accent-color);
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(91, 42, 84, 0.12);
         }
 
         .exp-title {
+            font-weight: 800;
             color: var(--primary-color);
-            font-size: 20px;
-            margin-bottom: 5px;
+            font-size: 18px;
         }
 
         .exp-date {
+            color: #b58d19;
             font-size: 14px;
-            color: var(--accent-color);
-            font-weight: 700;
             margin-bottom: 15px;
+            font-weight: 700;
         }
 
-        /* --- RESEARCH CARD --- */
+        /* --- RESEARCH --- */
         .research-card {
-            background: linear-gradient(135deg, var(--primary-color), #4b1a43);
-            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
             padding: 50px;
             border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(109, 46, 99, 0.3);
-            position: relative;
-            overflow: hidden;
+            border: 2px solid transparent;
+            box-shadow: 0 10px 40px rgba(91, 42, 84, 0.08);
+            transition: var(--transition);
+        }
+        
+        .research-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.2);
+            transform: scale(1.02);
         }
 
-        .research-card::after {
-            content: '🔬';
-            position: absolute;
-            right: -20px; bottom: -30px;
-            font-size: 150px;
-            opacity: 0.1;
-            transform: rotate(-15deg);
+        /* --- FOOTER --- */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
         }
 
-        /* --- HIỆU ỨNG TRƯỢT LÊN --- */
+        /* --- HIỆU ỨNG HIỆN DẦN --- */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            transform: translateY(60px) scale(0.95);
+            transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);
         }
 
-        /* --- RESPONSIVE CHO ĐIỆN THOẠI & TABLET --- */
-        @media screen and (max-width: 1024px) {
-            body { flex-direction: column; }
-            .sidebar {
-                width: 100%; height: auto; position: relative;
-                padding: 60px 20px 40px; box-shadow: none;
-            }
-            .main-content { margin-left: 0; width: 100%; }
-            section { padding: 60px 5%; min-height: auto; }
-            .nav-links { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* --- RESPONSIVE CHO ĐIỆN THOẠI --- */
+        @media screen and (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-title { font-size: 38px; }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 20px; }
+            .timeline-item.right { left: 0; }
+            .timeline-item::after, .timeline-item.right::after { left: 19px; }
+            section { padding: 100px 5% 50px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR CỐ ĐỊNH -->
-    <div class="sidebar">
-        <div class="avatar-wrapper">
-            <img src="avatar.jpg" alt="Nguyễn Phương Thảo" class="hero-avatar">
-        </div>
-        <h1>Nguyễn Phương Thảo</h1>
-        
-        <!-- Hiệu ứng gõ chữ bằng JS -->
-        <div class="typewriter">
-            <span id="type-text"></span><span class="cursor">|</span>
-        </div>
+    <!-- NỀN BỤI SAO -->
+    <div class="stars-bg"></div>
 
-        <div class="info-box">
-            <p>🏛 <strong>Foreign Trade University</strong></p>
-            <p>🎓 2nd-year Student</p>
-            <p>📚 Major: International Business</p>
-            <p>🌍 English: IELTS 7.5</p>
-            <p>📧 npthaor105@gmail.com</p>
-        </div>
-
+    <!-- THANH ĐIỀU HƯỚNG -->
+    <nav>
+        <a href="#home" class="logo">Thao.</a>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
+            <li><a href="#home">Home</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#research">Research</a></li>
         </ul>
-    </div>
+    </nav>
 
-    <!-- NỘI DUNG CHÍNH -->
-    <div class="main-content">
+    <!-- TRANG CHỦ / GIỚI THIỆU -->
+    <section id="home">
+        <div class="avatar-container reveal">
+            <div class="avatar-glow"></div>
+            <!-- ĐẢM BẢO FILE avatar.jpg NẰM CÙNG THƯ MỤC TRÊN GITHUB -->
+            <img src="avatar.jpg" alt="Nguyễn Phương Thảo" class="hero-avatar">
+        </div>
         
-        <!-- ABOUT -->
-        <section id="about">
-            <h2 class="section-title reveal">Objective</h2>
-            <div class="objective-text reveal">
-                My goal is to join a supportive and professional team. I believe that an open, respectful, and collaborative environment will help me reach my full potential and make a meaningful impact on the company's growth.
+        <h1 class="hero-title reveal">Nguyễn Phương Thảo</h1>
+        
+        <!-- Thông tin học vấn mới được thêm -->
+        <div class="hero-education reveal">
+            🏛 Foreign Trade University | 🎓 2nd-year Student<br>
+            📚 Major: International Business
+        </div>
+
+        <p class="hero-subtitle reveal">
+            "My goal is to join a supportive and professional team. I believe that an open, respectful, and collaborative environment will help me reach my full potential and make a meaningful impact on the company's growth."
+        </p>
+        
+        <p class="reveal" style="margin-bottom: 35px; color: var(--primary-color); font-weight: 700; font-size: 15px;">
+            🌍 English: IELTS 7.5 | 📧 npthaor105@gmail.com
+        </p>
+        
+        <div class="reveal">
+            <a href="#experience" class="btn">View My Experience</a>
+        </div>
+    </section>
+
+    <!-- KỸ NĂNG -->
+    <section id="skills">
+        <h2 class="section-title reveal">Professional Skills</h2>
+        <div class="skills-grid reveal">
+            <div class="skill-card">
+                <div class="skill-title">Teamwork</div>
+                <div>Collaborating effectively in school study groups and various clubs.</div>
             </div>
-        </section>
+            <div class="skill-card">
+                <div class="skill-title">Office Software</div>
+                <div>Proficient in Google Docs, Sheets, Microsoft Word, and Excel.</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-title">Organization</div>
+                <div>Experienced in planning and organizing events with teams.</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-title">Communication</div>
+                <div>Skilled in collaborating and liaising with sponsors and partners.</div>
+            </div>
+        </div>
+    </section>
 
-        <!-- SKILLS -->
-        <section id="skills">
-            <h2 class="section-title reveal">Professional Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card reveal">
-                    <div class="skill-title">Teamwork</div>
-                    <div class="skill-desc">Collaborating effectively in school study groups and various clubs.</div>
-                </div>
-                <div class="skill-card reveal" style="transition-delay: 0.1s;">
-                    <div class="skill-title">Office Software</div>
-                    <div class="skill-desc">Proficient in Google Docs, Sheets, Microsoft Word, and Excel.</div>
-                </div>
-                <div class="skill-card reveal" style="transition-delay: 0.2s;">
-                    <div class="skill-title">Organization</div>
-                    <div class="skill-desc">Experienced in planning and organizing events with teams.</div>
-                </div>
-                <div class="skill-card reveal" style="transition-delay: 0.3s;">
-                    <div class="skill-title">Communication</div>
-                    <div class="skill-desc">Skilled in collaborating and liaising with sponsors and partners.</div>
+    <!-- KINH NGHIỆM -->
+    <section id="experience">
+        <h2 class="section-title reveal">Activities & Experience</h2>
+        <div class="timeline reveal">
+            
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="exp-title">Deputy Leader</div>
+                    <div class="exp-date">Hawaiiu. Bracelet Business Project | 03/2025 - 05/2025</div>
+                    <div>Co-managed project operations, assigned tasks, and supervised team quality. Directly in charge of media design and budget management.</div>
                 </div>
             </div>
-        </section>
 
-        <!-- EXPERIENCE -->
-        <section id="experience">
-            <h2 class="section-title reveal">Experience</h2>
-            <div class="timeline">
-                
-                <div class="timeline-item reveal">
-                    <div class="exp-content">
-                        <div class="exp-title">Deputy Leader</div>
-                        <div class="exp-date">Hawaiiu. Bracelet Business Project | 03/2025 - 05/2025</div>
-                        <div>Co-managed project operations, assigned tasks, and supervised team quality. Directly in charge of media design and budget management.</div>
-                    </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="exp-title">Media Team Member</div>
+                    <div class="exp-date">CSP Cooking Trendsetters Club | 08/2022 - 06/2023</div>
+                    <div>Brainstormed and designed media materials. Coordinated culinary events and managed attendee support. (Tools: Canva, Adobe Illustrator)</div>
                 </div>
-
-                <div class="timeline-item reveal">
-                    <div class="exp-content">
-                        <div class="exp-title">Media Team Member</div>
-                        <div class="exp-date">CSP Cooking Trendsetters Club | 08/2022 - 06/2023</div>
-                        <div>Brainstormed and designed media materials. Coordinated culinary events and managed attendee support. (Tools: Canva, Adobe Illustrator)</div>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="exp-content">
-                        <div class="exp-title">External Relations Member</div>
-                        <div class="exp-date">CSP Debate Society | 08/2022 - 06/2023</div>
-                        <div>Approached, negotiated with, and managed the sponsor network. Planned and organized networking events and debate competitions.</div>
-                    </div>
-                </div>
-
             </div>
-        </section>
 
-        <!-- RESEARCH -->
-        <section id="research" style="border-bottom: none;">
-            <h2 class="section-title reveal">Research Experience</h2>
-            <div class="research-card reveal">
-                <h3 style="margin-bottom: 10px; font-size: 26px;">Scientific Research Participant</h3>
-                <p style="color: var(--accent-color); font-weight: 700; margin-bottom: 20px;">08/2025 - 04/2026</p>
-                <p style="text-align: justify; font-size: 15px; line-height: 1.8; opacity: 0.9;">
-                    Participated in 2 research projects on "AI Sycophancy" and "AI Personalization". Handled the qualitative research and content comprehensively: built the theoretical framework, formulated hypotheses, interpreted data analysis results, and directly authored practical recommendations for businesses and regulatory agencies. Ensured adherence to defined <i>competence</i> frameworks.
-                </p>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="exp-title">External Relations Member</div>
+                    <div class="exp-date">CSP Debate Society | 08/2022 - 06/2023</div>
+                    <div>Approached, negotiated with, and managed the sponsor network. Planned and organized networking events and debate competitions.</div>
+                </div>
             </div>
-        </section>
 
-    </div>
+        </div>
+    </section>
 
-    <!-- SCRIPTS -->
+    <!-- NGHIÊN CỨU -->
+    <section id="research">
+        <h2 class="section-title reveal">Research Experience</h2>
+        <div class="research-card reveal">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px; font-size: 24px;">Scientific Research Participant</h3>
+            <p style="color: var(--accent-color); font-weight: 700; margin-bottom: 25px;">08/2025 - 04/2026</p>
+            <p style="color: var(--text-dark); text-align: justify; font-size: 15px; line-height: 1.8;">
+                Participated in 2 research projects on "AI Sycophancy" and "AI Personalization". Handled the qualitative research and content comprehensively: built the theoretical framework, formulated hypotheses, interpreted data analysis results, and directly authored practical recommendations for businesses and regulatory agencies. Ensured adherence to defined <i>competence</i> frameworks.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p style="font-weight: 800; font-size: 20px;">Nguyễn Phương Thảo</p>
+        <p style="margin-top: 10px;">Email: npthaor105@gmail.com</p>
+        <p style="font-size: 13px; margin-top: 20px; opacity: 0.7;">© 2026 Portfolio. All rights reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT ANIMATION SCROLL -->
     <script>
-        // 1. Hiệu ứng gõ chữ (Typewriter) cho Sidebar
-        const textToType = "Future Business Professional 🚀";
-        const typeTarget = document.getElementById("type-text");
-        let i = 0;
-
-        function typeWriter() {
-            if (i < textToType.length) {
-                typeTarget.innerHTML += textToType.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        // Bắt đầu gõ chữ sau 0.5s
-        setTimeout(typeWriter, 500);
-
-        // 2. Hiệu ứng Scroll Reveal (Hiện ra khi cuộn)
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
+                var elementVisible = 120;
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
