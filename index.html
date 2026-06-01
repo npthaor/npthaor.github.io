@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Nguyễn Phương Thảo</title>
-    <!-- Thêm font Playfair Display cho nét chữ nghiêng nghệ thuật ở phần Contact -->
+    <!-- Font Playfair Display cho nét chữ nghiêng nghệ thuật -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            var(--primary-color): #5b2a54; 
+            --primary-color: #5b2a54; 
             --accent-color: #d4af37; 
             --bg-gradient: linear-gradient(135deg, #f7eef7 0%, #e8dae9 100%);
             --glass-bg: rgba(255, 255, 255, 0.55);
@@ -39,6 +39,20 @@
 
         h1, h2, h3, .logo, .exp-title, .skill-title {
             font-family: 'Montserrat', sans-serif;
+        }
+
+        /* --- CLASS DÀNH CHO FONT CHỮ NHẤN (TƯƠNG TỰ CHỮ TOGETHER) --- */
+        .italic-serif {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .title-accent {
+            color: var(--accent-color);
+            text-transform: lowercase; /* Viết thường để tạo cảm giác nghệ thuật */
+            font-size: 1.1em;
+            letter-spacing: 0;
         }
 
         /* --- BACKGROUND BỤI SAO LẤP LÁNH --- */
@@ -198,27 +212,6 @@
             font-style: italic;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 35px;
-            background: linear-gradient(45deg, #5b2a54, #7a3861);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: var(--transition);
-            box-shadow: 0 8px 20px rgba(91, 42, 84, 0.3);
-            border: 2px solid transparent;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 25px rgba(91, 42, 84, 0.5);
-            border-color: var(--accent-color);
-        }
-
         /* --- EDUCATION & SKILLS (GLASSMORPHISM) --- */
         .grid-layout {
             display: grid;
@@ -342,9 +335,9 @@
             box-shadow: 0 15px 35px rgba(91, 42, 84, 0.12);
         }
 
-        /* --- DARK CONTACT SECTION MỚI --- */
+        /* --- DARK CONTACT SECTION --- */
         .contact-box {
-            background: rgba(30, 15, 28, 0.95); /* Màu tím siêu đậm, gần đen */
+            background: rgba(30, 15, 28, 0.95); 
             border-radius: 24px;
             padding: 60px;
             display: flex;
@@ -383,13 +376,6 @@
             font-weight: 300;
             line-height: 1.2;
             margin-bottom: 20px;
-        }
-
-        .italic-serif {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: #e5989b; /* Màu hồng pastel nhẹ làm điểm nhấn */
-            font-weight: 600;
         }
 
         .contact-desc {
@@ -489,7 +475,7 @@
 
         .submit-btn {
             align-self: flex-start;
-            background: linear-gradient(135deg, #d84b6b, #b33b5c); /* Gradient đỏ/hồng sẫm giống ảnh */
+            background: linear-gradient(135deg, #d84b6b, #b33b5c); 
             color: white;
             border: none;
             padding: 15px 30px;
@@ -569,9 +555,10 @@
         </p>
     </section>
 
-    <!-- HỌC VẤN (Thêm mới) -->
+    <!-- HỌC VẤN -->
     <section id="education">
-        <h2 class="section-title reveal">Education Journey</h2>
+        <!-- Áp dụng font Playfair Display cho từ khoá để đồng bộ với "together." -->
+        <h2 class="section-title reveal">Education <span class="italic-serif title-accent">journey.</span></h2>
         <div class="grid-layout reveal">
             <div class="glass-card">
                 <div class="card-title">Foreign Trade University</div>
@@ -583,11 +570,12 @@
             </div>
             
             <div class="glass-card">
-                <div class="card-title">THCS&THPT Nguyễn Tất Thành</div>
+                <!-- Đã dịch sang Tiếng Anh -->
+                <div class="card-title">Nguyen Tat Thanh High School</div>
                 <div class="card-date">2021 - 2024</div>
                 <div class="card-desc">
-                    <strong>Học sinh cấp 3 - Lớp trưởng</strong><br>
-                    🌟 Khối: A01 Toán Lý Anh
+                    <strong>High School Student - Class President</strong><br>
+                    🌟 Major Subjects: Math, Physics, English (Block A01)
                 </div>
             </div>
         </div>
@@ -595,7 +583,7 @@
 
     <!-- KỸ NĂNG -->
     <section id="skills">
-        <h2 class="section-title reveal">Professional Skills</h2>
+        <h2 class="section-title reveal">Professional <span class="italic-serif title-accent">skills.</span></h2>
         <div class="grid-layout reveal">
             <div class="glass-card" style="padding: 25px;">
                 <div class="card-title" style="font-size: 18px;">Teamwork</div>
@@ -618,7 +606,7 @@
 
     <!-- KINH NGHIỆM -->
     <section id="experience">
-        <h2 class="section-title reveal">Experience & Activities</h2>
+        <h2 class="section-title reveal">Experience & <span class="italic-serif title-accent">activities.</span></h2>
         <div class="timeline reveal">
             <div class="timeline-item left">
                 <div class="timeline-content">
@@ -644,13 +632,14 @@
         </div>
     </section>
 
-    <!-- CONTACT DARK MODE (Thêm mới) -->
+    <!-- CONTACT DARK MODE -->
     <section id="contact" style="padding-bottom: 100px;">
         <div class="contact-box reveal">
             
             <div class="contact-left">
                 <div class="contact-badge">SAY HELLO</div>
-                <h2>Let's work <br><span class="italic-serif">together.</span></h2>
+                <!-- Chữ together giữ nguyên màu hồng pastel đặc trưng của Dark mode -->
+                <h2>Let's work <br><span class="italic-serif" style="color: #e5989b;">together.</span></h2>
                 <p class="contact-desc">
                     I'm actively looking for internship opportunities. Whether you have a role in mind or just want to chat about International Business and Law — my inbox is always open.
                 </p>
@@ -663,15 +652,9 @@
                     </div>
                     <div class="contact-arrow">&nearr;</div>
                 </a>
-
-                <a href="#" class="contact-card-link">
-                    <div class="contact-icon">📷</div>
-                    <div class="contact-info">
-                        <span>Instagram</span>
-                        <strong>@nguyenphuongthao</strong>
-                    </div>
-                    <div class="contact-arrow">&nearr;</div>
-                </a>
+                
+                <!-- Đã xóa ô Instagram theo yêu cầu -->
+                
             </div>
 
             <div class="contact-right">
