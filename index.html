@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyen Phuong Thao | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Nguyễn Phương Thảo | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS GOM CHUNG VÀO HTML */
+        /* GLOBAL STYLES */
         * {
             margin: 0;
             padding: 0;
@@ -14,218 +14,350 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth; /* Hiệu ứng cuộn mượt */
+        }
+
         body {
-            /* Nền Galaxy sáng nhẹ nữ tính (Pastel gradient) */
-            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
-            background-attachment: fixed;
-            color: #4a4a4a;
+            background-color: #f9f9ff;
+            color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
         }
 
-        /* Hiệu ứng các vì sao lấp lánh chìm phía sau */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: 
-                radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px);
-            background-position: 0 0, 50px 50px;
-            background-size: 100px 100px;
-            opacity: 0.4;
-            z-index: -1;
-            animation: twinkle 5s infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0.2; }
-            100% { opacity: 0.6; }
-        }
-
-        /* Phong cách Glassmorphism (Kính mờ trong suốt) */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        /* Hiệu ứng Bling Bling khi Hover */
-        .glass-panel:hover, .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 0 15px rgba(255, 255, 255, 0.8), 
-                0 0 30px rgba(251, 194, 235, 0.8), 
-                0 0 45px rgba(166, 193, 238, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-
-        container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            display: block;
-        }
-
+        /* NAVBAR (Thanh điều hướng) */
         header {
-            text-align: center;
-            padding: 80px 20px 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
         }
 
-        header h1 {
-            font-size: 3rem;
-            color: #fff;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 10px;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            max-width: 1200px;
+            margin: auto;
         }
 
-        header p {
-            font-size: 1.2rem;
-            color: #fff;
-            font-weight: 300;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4e54c8;
+            text-decoration: none;
             letter-spacing: 1px;
         }
 
-        h2 {
-            color: #6a4c9c;
-            margin-bottom: 20px;
-            font-size: 2rem;
-            border-bottom: 2px dashed rgba(255,255,255,0.5);
-            display: inline-block;
-            padding-bottom: 5px;
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
         }
 
-        /* Lưới dự án (Grid) */
-        .grid-2 {
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4e54c8;
+        }
+
+        /* SECTION COMMON */
+        section {
+            padding: 100px 20px 60px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #4e54c8;
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ABOUT SECTION */
+        #about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .about-content h1 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .about-content h3 {
+            font-size: 1.2rem;
+            color: #4e54c8;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 25px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: #fff;
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            font-weight: 600;
+            color: #4e54c8;
+            border-left: 4px solid #4e54c8;
+        }
+
+        /* PROJECTS SECTION */
+        .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .project-card {
-            padding: 25px;
-            text-align: left;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #4e54c8;
         }
 
         .project-card h3 {
-            color: #5b3e85;
+            font-size: 1.3rem;
+            color: #2c3e50;
             margin-bottom: 15px;
         }
 
-        .tags span {
+        .project-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .project-tag {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.5);
+            background: #eef2fa;
+            color: #4e54c8;
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
+            font-weight: 600;
             margin-right: 5px;
-            margin-bottom: 10px;
-            color: #6a4c9c;
-            font-weight: 600;
+            margin-bottom: 5px;
         }
 
-        /* Nút bấm */
-        .btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%);
-            color: #5b3e85;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
+        /* SKILLS SECTION */
+        .skills-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
 
+        .skill-item {
+            margin-bottom: 25px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .progress-line {
+            height: 10px;
+            width: 100%;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-line span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            border-radius: 10px;
+        }
+
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 20px;
+            background: #2c3e50;
             color: #fff;
             margin-top: 50px;
         }
 
-        footer a {
-            color: #fff;
-            margin: 0 10px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        footer a:hover {
-            text-shadow: 0 0 10px #fff;
-        }
-
-        /* Responsive cho điện thoại */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            .glass-panel { padding: 25px; }
+            nav { padding: 15px 20px; flex-direction: column; gap: 10px; }
+            .about-content h1 { font-size: 2.2rem; }
+            section { padding: 120px 20px 40px; }
         }
     </style>
 </head>
 <body>
 
-<container>
     <header>
-        <h1>Nguyen Phuong Thao</h1>
-        <p>Business Law Student | Data Analysis Enthusiast | Film Photographer</p>
+        <nav>
+            <a href="#" class="logo">Thao.NPT</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="glass-panel" id="about">
-        <h2>About Me ✨</h2>
-        <p>Hello! I am a university student majoring in <b>Business Law</b> and <b>International Contracts</b>. I have a strong passion for integrating modern technology into academic research and administrative workflows. My academic journey is driven by a desire for competence, precision, and discovering the balance between professional duties and personal life.</p>
-        <br>
-        <p>Besides English, I am currently preparing for my Mandarin Chinese HSKK oral examinations. In my free time, I love capturing moments with my Pentax Espio 115 and exploring Eastern astrology & numerology charts.</p>
+    <section id="about">
+        <div class="about-content">
+            <img src="avatar.jpg" alt="Nguyen Phuong Thao" class="profile-img">
+            <h1>Nguyễn Phương Thảo</h1>
+            <h3>International Business Major | Foreign Trade University</h3>
+            <p>I have a strong passion for integrating modern technology into academic research and administrative workflows. My academic journey is driven by a desire for competence, precision, and discovering the balance between professional duties and personal life.</p>
+            
+            <div class="stats-container">
+                <div class="stat-box">🎯 IELTS: 7.5</div>
+                <div class="stat-box">📚 5+ Academic Projects</div>
+            </div>
+        </div>
     </section>
 
     <section id="projects">
-        <h2>Projects & Research 🚀</h2>
-        <div class="grid-2">
+        <h2 class="section-title">Projects & Experience</h2>
+        <div class="projects-grid">
             
-            <div class="glass-panel project-card">
-                <h3>Academic Research: Service Recovery Paradox</h3>
-                <div class="tags">
-                    <span>Business Law</span>
-                    <span>AI User Satisfaction</span>
+            <div class="project-card">
+                <h3>Academic Research on AI (1/2)</h3>
+                <p>Investigated the Service Recovery Paradox and user satisfaction with AI systems. Focused on evaluating the <i>competence</i> of AI agents in resolving service failures and refining academic abstracts for publication.</p>
+                <div>
+                    <span class="project-tag">AI Integration</span>
+                    <span class="project-tag">Scientific Research</span>
                 </div>
-                <p>Authored a research paper analyzing user satisfaction and the <i>competence</i> of AI systems in service recovery scenarios. Worked on validating core hypotheses (H6, H7) and refining academic abstracts.</p>
             </div>
 
-            <div class="glass-panel project-card">
-                <h3>Data Analysis with Python</h3>
-                <div class="tags">
-                    <span>Python</span>
-                    <span>Pandas</span>
-                    <span>Jupyter Lab</span>
+            <div class="project-card">
+                <h3>Academic Research on AI (2/2)</h3>
+                <p>Explored technological integration in modern business operations, emphasizing the structural differences between Common Law and Civil Law contexts in international contracts.</p>
+                <div>
+                    <span class="project-tag">Data Analysis</span>
+                    <span class="project-tag">Business Law</span>
                 </div>
-                <p>Applied programmatic approaches to data structures. Utilized tools like pandas and Google Colab to automate administrative tasks, handle strings, and convert CSV data to Excel files efficiently.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Hawaiiu. - Bracelets Selling</h3>
+                <p>Managed an entrepreneurial venture focused on designing and selling handcrafted bracelets. Handled product strategy, customer engagement, and administrative precision in daily operations.</p>
+                <div>
+                    <span class="project-tag">Entrepreneurship</span>
+                    <span class="project-tag">E-commerce</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Market Entry Strategy: Chí Nguyên Company</h3>
+                <p>Conducted business screening and researched entry modes for Chí Nguyên company to successfully enter a new international market, ensuring compliance with global business standards.</p>
+                <div>
+                    <span class="project-tag">Market Research</span>
+                    <span class="project-tag">International Business</span>
+                </div>
             </div>
 
         </div>
     </section>
 
-    <section class="glass-panel" id="gallery">
-        <h2>Interests & Art 📸</h2>
-        <p>I find inspiration through the viewfinder of my <b>Pentax Espio 115</b>. I also deeply enjoy analyzing numerology charts (especially tracking the influence of numbers 1, 4, and 9) and studying the intricate concepts of Tử Vi.</p>
-        <br>
-        <a href="mailto:your.email@example.com" class="btn">Let's connect</a>
+    <section id="skills">
+        <h2 class="section-title">Professional Skills</h2>
+        <div class="skills-container">
+            
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>Business Screening & Market Research</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress-line"><span style="width: 90%;"></span></div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>English proficiency (IELTS 7.5 & Business English)</span>
+                    <span>85%</span>
+                </div>
+                <div class="progress-line"><span style="width: 85%;"></span></div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>Data Analysis (Python, Pandas, Jupyter Lab)</span>
+                    <span>80%</span>
+                </div>
+                <div class="progress-line"><span style="width: 80%;"></span></div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>Administrative Precision & Organization</span>
+                    <span>85%</span>
+                </div>
+                <div class="progress-line"><span style="width: 85%;"></span></div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>Mandarin Chinese (HSKK preparation)</span>
+                    <span>65%</span>
+                </div>
+                <div class="progress-line"><span style="width: 65%;"></span></div>
+            </div>
+
+        </div>
     </section>
 
     <footer>
-        <p>© 2026 Nguyen Phuong Thao. Crafted with stardust. ✨</p>
-        <div style="margin-top: 15px;">
-            <a href="#">LinkedIn</a> | 
-            <a href="#">Facebook</a> | 
-            <a href="#">Instagram</a>
-        </div>
+        <p>© 2026 Nguyen Phuong Thao. All rights reserved.</p>
     </footer>
-</container>
 
 </body>
 </html>
