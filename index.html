@@ -3,336 +3,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Nguyễn Phương Thảo</title>
+    <title>Portfolio | Nguyễn Phương Thảo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #552744; 
-            --bg-color: #f4f3f5; 
-            --text-color: #333333;
-            --line-color: #552744;
-            --hover-color: #7a3861;
+            --secondary-color: #f8f6f8; 
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Hiệu ứng cuộn trang mượt */
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e6e6e6;
-            margin: 0;
-            padding: 40px 20px;
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
 
-        .resume-container {
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
             width: 100%;
-            max-width: 950px;
-            background-color: var(--bg-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
             display: flex;
-            flex-direction: row;
-            overflow: hidden; 
-            border-radius: 10px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            backdrop-filter: blur(5px);
         }
 
-        /* --- CỘT TRÁI --- */
-        .left-column {
-            width: 35%;
-            padding: 40px 30px;
-            box-sizing: border-box;
-            background-color: #f4f3f5;
-            border-right: 1px solid #e0e0e0;
-        }
-
-        .avatar {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 3px solid var(--primary-color);
-            display: block;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .avatar:hover {
-            transform: scale(1.08) rotate(3deg);
-            box-shadow: 0 8px 15px rgba(85, 39, 68, 0.3);
-        }
-
-        h1 {
-            font-size: 32px;
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
             color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 5px;
-            text-transform: uppercase;
+            text-decoration: none;
             letter-spacing: 1px;
         }
 
-        .contact-info {
-            font-size: 14px;
-            margin-bottom: 40px;
-            color: #444;
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- CHUNG CHO CÁC SECTION --- */
+        section {
+            padding: 100px 10%;
         }
 
         .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* --- HERO SECTION (TRANG CHỦ) --- */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            background-color: var(--secondary-color);
+            padding-top: 80px;
+        }
+
+        .hero-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(85, 39, 68, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-title {
+            font-size: 48px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(85, 39, 68, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #3b192e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(85, 39, 68, 0.4);
+        }
+
+        /* --- SKILLS SECTION --- */
+        #skills {
+            background-color: var(--white);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--secondary-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--primary-color);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .skill-title {
             font-size: 18px;
             color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 8px;
-            font-weight: 800;
-        }
-
-        ul.skills-list {
-            list-style-type: disc;
-            padding-left: 20px;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-
-        ul.skills-list li {
+            font-weight: 700;
             margin-bottom: 15px;
-            color: #333;
-            transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        ul.skills-list li:hover {
-            color: var(--hover-color);
-            transform: translateX(5px);
-        }
-
-        .bold-text {
-            font-weight: bold;
-            color: var(--text-color);
-        }
-
-        /* --- CỘT PHẢI --- */
-        .right-column {
-            width: 65%;
-            padding: 40px 40px 40px 30px;
-            box-sizing: border-box;
-            background-color: #ffffff;
-        }
-
-        .objective-text {
+        .skill-desc {
             font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            text-align: justify;
+            color: var(--text-light);
         }
 
-        /* --- TIMELINE --- */
+        /* --- EXPERIENCE SECTION --- */
+        #experience {
+            background-color: var(--secondary-color);
+        }
+
         .timeline {
-            border-left: 2px solid var(--line-color);
-            margin-left: 8px;
-            padding-left: 25px;
-            margin-bottom: 40px;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
         }
 
         .timeline-item {
+            padding: 10px 40px;
             position: relative;
-            margin-bottom: 30px;
-            padding: 15px;
-            border-radius: 8px;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: inherit;
+            width: 50%;
         }
 
-        .timeline-item:hover {
-            background-color: #fcfcfc;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
 
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-item::before {
+        .timeline-item::after {
             content: '';
             position: absolute;
-            left: -32px; 
-            top: 18px;
-            width: 12px;
-            height: 12px;
-            background-color: var(--primary-color);
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--white);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
         }
 
-        .timeline-item:hover::before {
-            transform: scale(1.3);
-            background-color: var(--hover-color);
+        .timeline-item.right::after {
+            left: -10px;
         }
 
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 8px;
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--white);
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
         }
 
-        .item-title {
-            font-weight: bold;
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .exp-title {
+            font-weight: 700;
             color: var(--primary-color);
-            font-size: 15px;
-            max-width: 75%;
+            font-size: 16px;
         }
 
-        .item-date {
-            font-size: 12px;
-            color: #666;
-            white-space: nowrap;
-        }
-
-        .item-desc {
-            font-size: 13.5px;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .item-subtext {
+        .exp-date {
+            color: #888;
             font-size: 13px;
-            font-style: italic;
-            margin-top: 5px;
-            color: #555;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
 
-        /* --- HIỆU ỨNG ANIMATION AN TOÀN BẰNG CSS THUẦN --- */
-        @keyframes slideUpFade {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .exp-desc {
+            font-size: 14px;
+            color: var(--text-light);
         }
 
-        .animate-up {
-            opacity: 0; /* Ẩn đi lúc chưa load xong */
-            animation: slideUpFade 0.8s ease-out forwards;
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
         }
 
-        /* Cài đặt độ trễ để các phần hiện ra lần lượt */
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.3s; }
-        .delay-3 { animation-delay: 0.5s; }
-        .delay-4 { animation-delay: 0.7s; }
+        footer p {
+            margin-bottom: 10px;
+        }
 
-        @media (max-width: 768px) {
-            .resume-container {
-                flex-direction: column;
-            }
-            .left-column, .right-column {
-                width: 100%;
-                padding: 30px;
-                border-right: none;
-            }
+        /* --- HIỆU ỨNG HIỆN DẦN --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE CHO ĐIỆN THOẠI --- */
+        @media screen and (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; /* Có thể làm menu hamburger sau */ }
+            .hero-title { font-size: 36px; }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item.right { left: 0; }
+            .timeline-item::after { left: 21px; }
+            .timeline-item.left::after { left: 21px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="resume-container">
-        <div class="left-column animate-up delay-1">
-            <img src="avatar.jpg" alt="Nguyễn Phương Thảo" class="avatar">
+    <nav>
+        <a href="#home" class="logo">Thao.</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#research">Research</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <img src="avatar.jpg" alt="Nguyễn Phương Thảo" class="hero-avatar">
+        <h1 class="hero-title">Nguyễn Phương Thảo</h1>
+        <p class="hero-subtitle">
+            My goal is to join a supportive and professional team. I believe that an open, respectful, and collaborative environment will help me reach my full potential and make a meaningful impact on the company's growth.
+        </p>
+        <p style="margin-bottom: 30px; color: var(--primary-color); font-weight: 600;">
+            🎓 English: IELTS 7.5 | 📧 npthaor105@gmail.com
+        </p>
+        <a href="#experience" class="btn">View My Experience</a>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title reveal">Professional Skills</h2>
+        <div class="skills-grid reveal">
+            <div class="skill-card">
+                <div class="skill-title">Teamwork</div>
+                <div class="skill-desc">Collaborating effectively in school study groups and various clubs.</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-title">Office Software</div>
+                <div class="skill-desc">Proficient in Google Docs, Sheets, Microsoft Word, and Excel.</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-title">Organization</div>
+                <div class="skill-desc">Experienced in planning and organizing events with teams.</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-title">Communication</div>
+                <div class="skill-desc">Skilled in collaborating and liaising with sponsors and partners.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title reveal">Activities & Experience</h2>
+        <div class="timeline reveal">
             
-            <h1>Nguyễn Phương Thảo</h1>
-            <div class="contact-info">
-                <p><strong>Email:</strong> npthaor105@gmail.com</p>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="exp-title">Import Intern</div>
+                    <div class="exp-date">4TEK Industrial Solutions JSC | 07/2025 - 08/2025</div>
+                    <div class="exp-desc">Reviewed, verified, and organized documents. Drafted correspondence using templates; assisted with partner reception and logistical tasks to ensure smooth operations.</div>
+                </div>
             </div>
 
-            <div class="section-title">EDUCATION</div>
-            <ul class="skills-list" style="list-style-type: none; padding-left: 0;">
-                <li style="margin-bottom: 10px;">
-                    <span class="bold-text">University Student</span><br>
-                    Major: Business Law & International Contracts
-                </li>
-            </ul>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="exp-title">Deputy Leader</div>
+                    <div class="exp-date">Hawaiiu. Bracelet Business Project | 03/2025 - 05/2025</div>
+                    <div class="exp-desc">Co-managed project operations, assigned tasks, and supervised team quality. Directly in charge of media design and budget management.</div>
+                </div>
+            </div>
 
-            <div class="section-title">SKILLS</div>
-            <ul class="skills-list">
-                <li><span class="bold-text">Teamwork:</span> School study groups, clubs</li>
-                <li><span class="bold-text">Office Software:</span> Google Docs, Sheets, Microsoft Word, Excel,...</li>
-                <li><span class="bold-text">Data Analysis:</span> Python (pandas, Jupyter Lab, Google Colab)</li>
-                <li><span class="bold-text">Organization:</span> Planning and organizing events with the team.</li>
-                <li><span class="bold-text">Communication:</span> Collaborating and liaising with sponsors/partners.</li>
-            </ul>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="exp-title">Media Team Member</div>
+                    <div class="exp-date">CSP Cooking Trendsetters Club | 08/2022 - 06/2023</div>
+                    <div class="exp-desc">Brainstormed and designed media materials. Coordinated culinary events and managed attendee support. (Tools: Canva, Adobe Illustrator)</div>
+                </div>
+            </div>
 
-            <div class="section-title">LANGUAGES</div>
-            <ul class="skills-list">
-                <li><span class="bold-text">English:</span> IELTS 7.5 overall</li>
-                <li><span class="bold-text">Mandarin Chinese:</span> Conversational & HSKK Preparation</li>
-            </ul>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="exp-title">External Relations Member</div>
+                    <div class="exp-date">CSP Debate Society | 08/2022 - 06/2023</div>
+                    <div class="exp-desc">Approached, negotiated with, and managed the sponsor network. Planned and organized networking events and debate competitions.</div>
+                </div>
+            </div>
+
         </div>
+    </section>
 
-        <div class="right-column">
-            <div class="section-title animate-up delay-2">OBJECTIVE</div>
-            <div class="objective-text animate-up delay-2">
-                My goal is to join a supportive and professional team. I believe that an open, respectful, and collaborative environment will help me reach my full potential and make a meaningful impact on the company's growth.
-            </div>
-
-            <div class="section-title animate-up delay-3">ACTIVITIES</div>
-            <div class="timeline animate-up delay-3">
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <div class="item-title">Import Intern, 4TEK Industrial Solutions Joint Stock Company</div>
-                        <div class="item-date">07/2025 - 08/2025</div>
-                    </div>
-                    <div class="item-desc">
-                        Reviewed, verified, and organized documents. Drafted correspondence using templates; assisted with partner reception and logistical tasks to ensure smooth operations.
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <div class="item-title">Deputy Leader, Hawaiiu. Bracelet Business Project</div>
-                        <div class="item-date">03/2025 - 05/2025</div>
-                    </div>
-                    <div class="item-desc">
-                        Assumed the role of Deputy Leader. Co-managed the project operations, assigned tasks, and supervised the team's work quality. Directly in charge of media design and budget management.
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <div class="item-title">Media Team Member, CSP Cooking Trendsetters Club</div>
-                        <div class="item-date">08/2022 - 06/2023</div>
-                    </div>
-                    <div class="item-desc">
-                        Brainstormed and designed media materials in collaboration with the content team. Coordinated culinary events and managed attendee support to ensure a professional experience.
-                    </div>
-                    <div class="item-subtext">Software used: Canva, Adobe Illustrator</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <div class="item-title">External Relations Team Member, CSP Debate Society</div>
-                        <div class="item-date">08/2022 - 06/2023</div>
-                    </div>
-                    <div class="item-desc">
-                        Approached, negotiated with, and managed the sponsor network to ensure optimal value for partners. Planned and organized networking events and debate competitions.
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-title animate-up delay-4">RESEARCH EXPERIENCE</div>
-            <div class="timeline animate-up delay-4" style="margin-bottom: 0;">
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <div class="item-title">Participate in scientific research</div>
-                        <div class="item-date">08/2025 - 04/2026</div>
-                    </div>
-                    <div class="item-desc">
-                        Participated in 2 research projects on "AI Sycophancy" and "AI Personalization". Handled the qualitative research and content comprehensively: built the theoretical framework, formulated hypotheses, interpreted data analysis results, and directly authored practical recommendations for businesses and regulatory agencies. Ensure adherence to defined <i>competence</i> frameworks.
-                    </div>
-                </div>
-            </div>
+    <section id="research" style="background-color: var(--white);">
+        <h2 class="section-title reveal">Research Experience</h2>
+        <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center; background: var(--secondary-color); padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h3 style="color: var(--primary-color); margin-bottom: 10px;">Scientific Research Participant</h3>
+            <p style="color: #888; font-size: 14px; margin-bottom: 20px;">08/2025 - 04/2026</p>
+            <p style="color: var(--text-light); text-align: justify;">
+                Participated in 2 research projects on "AI Sycophancy" and "AI Personalization". Handled the qualitative research and content comprehensively: built the theoretical framework, formulated hypotheses, interpreted data analysis results, and directly authored practical recommendations for businesses and regulatory agencies. Ensured adherence to defined <i>competence</i> frameworks.
+            </p>
         </div>
-    </div>
+    </section>
 
+    <footer>
+        <p><strong>Nguyễn Phương Thảo</strong></p>
+        <p>Email: npthaor105@gmail.com</p>
+        <p style="font-size: 12px; margin-top: 15px; opacity: 0.8;">© 2026 Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Chạy ngay khi load trang
+    </script>
 </body>
 </html>
