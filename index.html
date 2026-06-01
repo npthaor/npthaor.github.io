@@ -4,360 +4,301 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nguyễn Phương Thảo | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link icon của FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Link font chữ Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* GLOBAL STYLES */
+        /* TỔNG QUAN */
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
-
-        html {
-            scroll-behavior: smooth; /* Hiệu ứng cuộn mượt */
-        }
-
         body {
-            background-color: #f9f9ff;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f1f1f1;
             color: #333;
             line-height: 1.6;
         }
-
-        /* NAVBAR (Thanh điều hướng) */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #4e54c8;
+        a {
             text-decoration: none;
-            letter-spacing: 1px;
+            color: #009688;
         }
-
-        .nav-links {
-            list-style: none;
+        
+        /* BỐ CỤC CHUNG */
+        .container {
+            max-width: 1400px;
+            margin: 20px auto;
             display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #4e54c8;
-        }
-
-        /* SECTION COMMON */
-        section {
-            padding: 100px 20px 60px;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #2c3e50;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background: #4e54c8;
-            display: block;
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        /* ABOUT SECTION */
-        #about {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .about-content h1 {
-            font-size: 2.8rem;
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-
-        .about-content h3 {
-            font-size: 1.2rem;
-            color: #4e54c8;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto 25px;
-        }
-
-        .stats-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
             flex-wrap: wrap;
         }
-
-        .stat-box {
-            background: #fff;
-            padding: 15px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            font-weight: 600;
-            color: #4e54c8;
-            border-left: 4px solid #4e54c8;
+        .left-col {
+            width: 33.33%;
+            padding: 0 15px;
+        }
+        .right-col {
+            width: 66.66%;
+            padding: 0 15px;
         }
 
-        /* PROJECTS SECTION */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #eee;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: #4e54c8;
-        }
-
-        .project-card h3 {
-            font-size: 1.3rem;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        .project-card p {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        .project-tag {
-            display: inline-block;
-            background: #eef2fa;
-            color: #4e54c8;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
-
-        /* SKILLS SECTION */
-        .skills-container {
-            background: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-
-        .skill-item {
-            margin-bottom: 25px;
-        }
-
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #333;
-        }
-
-        .progress-line {
-            height: 10px;
-            width: 100%;
-            background: #e0e0e0;
-            border-radius: 10px;
+        /* CARD TRẮNG */
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-radius: 4px;
             overflow: hidden;
         }
-
-        .progress-line span {
+        .padding-container {
+            padding: 20px;
+        }
+        
+        /* CỘT TRÁI - AVATAR & INFO */
+        .profile-img-container {
+            position: relative;
+        }
+        .profile-img-container img {
+            width: 100%;
             display: block;
-            height: 100%;
-            background: linear-gradient(90deg, #4e54c8, #8f94fb);
+        }
+        .name-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            color: white;
+            padding: 15px;
+        }
+        .name-overlay h2 {
+            font-weight: 400;
+            font-size: 24px;
+        }
+        .info-list p {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #555;
+        }
+        .info-list i {
+            color: #009688;
+            margin-right: 15px;
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+
+        /* THANH KỸ NĂNG (SKILLS) */
+        .skill-title {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .skill-title i {
+            color: #009688;
+            margin-right: 10px;
+        }
+        .skill-name {
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .progress-bar-bg {
+            background-color: #f1f1f1;
             border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .progress-bar {
+            background-color: #009688;
+            height: 16px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            line-height: 16px;
+        }
+
+        /* CỘT PHẢI - ABOUT & PROJECTS */
+        .section-title {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #009688;
+            font-weight: 400;
+        }
+        .section-title i {
+            color: #009688;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        
+        .about-text {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .project-item {
+            margin-bottom: 25px;
+        }
+        .project-item h3 {
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .project-item h3 i {
+            color: #009688;
+            margin-right: 8px;
+        }
+        .project-item p {
+            color: #666;
+            font-size: 15px;
         }
 
         /* FOOTER */
         footer {
+            background-color: #009688;
+            color: white;
             text-align: center;
-            padding: 20px;
-            background: #2c3e50;
-            color: #fff;
-            margin-top: 50px;
+            padding: 30px 20px;
+            margin-top: 30px;
+        }
+        footer a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+        footer a:hover {
+            opacity: 0.8;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            nav { padding: 15px 20px; flex-direction: column; gap: 10px; }
-            .about-content h1 { font-size: 2.2rem; }
-            section { padding: 120px 20px 40px; }
+        /* RESPONSIVE CHO ĐIỆN THOẠI */
+        @media screen and (max-width: 800px) {
+            .left-col, .right-col {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="#" class="logo">Thao.NPT</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="about">
-        <div class="about-content">
-            <img src="avatar.jpg" alt="Nguyen Phuong Thao" class="profile-img">
-            <h1>Nguyễn Phương Thảo</h1>
-            <h3>International Business Major | Foreign Trade University</h3>
-            <p>I have a strong passion for integrating modern technology into academic research and administrative workflows. My academic journey is driven by a desire for competence, precision, and discovering the balance between professional duties and personal life.</p>
+<div class="container">
+    
+    <!-- ================= CỘT TRÁI ================= -->
+    <div class="left-col">
+        <div class="card">
+            <!-- Khu vực ảnh đại diện -->
+            <div class="profile-img-container">
+                <!-- Sửa chữ avatar.jpg thành tên ảnh của bạn nếu bạn up ảnh lên -->
+                <img src="avatar.jpg" alt="Profile Picture" onerror="this.src='https://www.w3schools.com/w3images/avatar_hat.jpg'">
+                <div class="name-overlay">
+                    <h2>Nguyễn Phương Thảo</h2>
+                </div>
+            </div>
             
-            <div class="stats-container">
-                <div class="stat-box">🎯 IELTS: 7.5</div>
-                <div class="stat-box">📚 5+ Academic Projects</div>
+            <!-- Thông tin liên hệ & Học vấn -->
+            <div class="padding-container info-list">
+                <p><i class="fas fa-briefcase"></i>International Business Major</p>
+                <p><i class="fas fa-university"></i>Foreign Trade University</p>
+                <p><i class="fas fa-certificate"></i>IELTS: 7.5</p>
+                <p><i class="fas fa-project-diagram"></i>5+ Academic Projects</p>
+                <p><i class="fas fa-envelope"></i>your.email@example.com</p>
+                
+                <hr>
+
+                <!-- Kỹ năng (Skills) -->
+                <p class="skill-title"><i class="fas fa-asterisk"></i>Skills</p>
+                
+                <div class="skill-name">Business Screening & Market Research</div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar" style="width:90%">90%</div>
+                </div>
+
+                <div class="skill-name">English Proficiency (IELTS 7.5)</div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar" style="width:85%">85%</div>
+                </div>
+
+                <div class="skill-name">Data Analysis (Python, Pandas, Jupyter)</div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar" style="width:80%">80%</div>
+                </div>
+
+                <div class="skill-name">Administrative Precision</div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar" style="width:85%">85%</div>
+                </div>
+
+                <div class="skill-name">Mandarin Chinese (HSKK)</div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar" style="width:65%">65%</div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="projects">
-        <h2 class="section-title">Projects & Experience</h2>
-        <div class="projects-grid">
-            
-            <div class="project-card">
-                <h3>Academic Research on AI (1/2)</h3>
-                <p>Investigated the Service Recovery Paradox and user satisfaction with AI systems. Focused on evaluating the <i>competence</i> of AI agents in resolving service failures and refining academic abstracts for publication.</p>
-                <div>
-                    <span class="project-tag">AI Integration</span>
-                    <span class="project-tag">Scientific Research</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>Academic Research on AI (2/2)</h3>
-                <p>Explored technological integration in modern business operations, emphasizing the structural differences between Common Law and Civil Law contexts in international contracts.</p>
-                <div>
-                    <span class="project-tag">Data Analysis</span>
-                    <span class="project-tag">Business Law</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>Hawaiiu. - Bracelets Selling</h3>
-                <p>Managed an entrepreneurial venture focused on designing and selling handcrafted bracelets. Handled product strategy, customer engagement, and administrative precision in daily operations.</p>
-                <div>
-                    <span class="project-tag">Entrepreneurship</span>
-                    <span class="project-tag">E-commerce</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>Market Entry Strategy: Chí Nguyên Company</h3>
-                <p>Conducted business screening and researched entry modes for Chí Nguyên company to successfully enter a new international market, ensuring compliance with global business standards.</p>
-                <div>
-                    <span class="project-tag">Market Research</span>
-                    <span class="project-tag">International Business</span>
-                </div>
-            </div>
-
+    <!-- ================= CỘT PHẢI ================= -->
+    <div class="right-col">
+        
+        <!-- Phần Giới thiệu (About Me) -->
+        <div class="card padding-container">
+            <h2 class="section-title"><i class="fas fa-user-circle"></i>About Me</h2>
+            <p class="about-text">
+                I have a strong passion for integrating modern technology into academic research and administrative workflows. My academic journey is driven by a desire for <b>competence</b>, precision, and discovering the balance between professional duties and personal life. 
+            </p>
+            <p class="about-text">
+                As an International Business major at Foreign Trade University, I continuously seek opportunities to apply theoretical knowledge to practical business scenarios, ranging from market entry research to data-driven analysis.
+            </p>
         </div>
-    </section>
 
-    <section id="skills">
-        <h2 class="section-title">Professional Skills</h2>
-        <div class="skills-container">
+        <!-- Phần Dự án (Projects) -->
+        <div class="card padding-container">
+            <h2 class="section-title"><i class="fas fa-cogs"></i>Projects & Experience</h2>
             
-            <div class="skill-item">
-                <div class="skill-info">
-                    <span>Business Screening & Market Research</span>
-                    <span>90%</span>
-                </div>
-                <div class="progress-line"><span style="width: 90%;"></span></div>
+            <div class="project-item">
+                <h3><i class="fas fa-brain"></i> Academic Scientific Research on AI (1)</h3>
+                <p>Focused on the "Service Recovery Paradox" and analyzed user satisfaction with AI systems. The research heavily evaluated the competence of AI in handling service failures and included rigorous refinement of academic abstracts.</p>
+            </div>
+            
+            <div class="project-item">
+                <h3><i class="fas fa-robot"></i> Academic Scientific Research on AI (2)</h3>
+                <p>Investigated the intersection of artificial intelligence and international business operations, providing analytical insights into how technological workflows can be optimized within legal and corporate frameworks.</p>
             </div>
 
-            <div class="skill-item">
-                <div class="skill-info">
-                    <span>English proficiency (IELTS 7.5 & Business English)</span>
-                    <span>85%</span>
-                </div>
-                <div class="progress-line"><span style="width: 85%;"></span></div>
+            <div class="project-item">
+                <h3><i class="fas fa-gem"></i> Hawaiiu. - Bracelets Selling</h3>
+                <p>Managed an entrepreneurial project focused on designing and selling handcrafted bracelets. Handled operational tasks, customer relationships, and applied administrative precision to ensure smooth business execution.</p>
             </div>
 
-            <div class="skill-item">
-                <div class="skill-info">
-                    <span>Data Analysis (Python, Pandas, Jupyter Lab)</span>
-                    <span>80%</span>
-                </div>
-                <div class="progress-line"><span style="width: 80%;"></span></div>
+            <div class="project-item">
+                <h3><i class="fas fa-chart-line"></i> Market Entry Strategy - Chí Nguyên Company</h3>
+                <p>Conducted comprehensive business screening and researched optimal entry modes for Chí Nguyên company to successfully expand into a new international market.</p>
             </div>
-
-            <div class="skill-item">
-                <div class="skill-info">
-                    <span>Administrative Precision & Organization</span>
-                    <span>85%</span>
-                </div>
-                <div class="progress-line"><span style="width: 85%;"></span></div>
-            </div>
-
-            <div class="skill-item">
-                <div class="skill-info">
-                    <span>Mandarin Chinese (HSKK preparation)</span>
-                    <span>65%</span>
-                </div>
-                <div class="progress-line"><span style="width: 65%;"></span></div>
-            </div>
-
         </div>
-    </section>
 
-    <footer>
-        <p>© 2026 Nguyen Phuong Thao. All rights reserved.</p>
-    </footer>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Find me on social media.</p>
+    <div style="margin-top: 15px;">
+        <a href="#"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://instagram.com/nguyenphuongthao"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p style="font-size: 14px; margin-top: 15px;">© 2026 Nguyen Phuong Thao.</p>
+</footer>
 
 </body>
 </html>
