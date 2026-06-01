@@ -10,7 +10,7 @@
             --bg-color: #f4f3f5; 
             --text-color: #333333;
             --line-color: #552744;
-            --hover-color: #7a3861; /* Màu tím nhạt hơn khi hover */
+            --hover-color: #7a3861;
         }
 
         body {
@@ -30,7 +30,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             display: flex;
             flex-direction: row;
-            overflow: hidden; /* Để hiệu ứng mượt hơn */
+            overflow: hidden; 
             border-radius: 10px;
         }
 
@@ -51,7 +51,7 @@
             margin-bottom: 20px;
             border: 3px solid var(--primary-color);
             display: block;
-            transition: transform 0.4s ease, box-shadow 0.4s ease; /* Hiệu ứng động cho avatar */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .avatar:hover {
@@ -83,7 +83,6 @@
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 8px;
             font-weight: 800;
-            position: relative;
         }
 
         ul.skills-list {
@@ -102,8 +101,238 @@
 
         ul.skills-list li:hover {
             color: var(--hover-color);
-            transform: translateX(5px); /* Trượt nhẹ sang phải khi di chuột */
+            transform: translateX(5px);
         }
 
         .bold-text {
-            font-weight:
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        /* --- CỘT PHẢI --- */
+        .right-column {
+            width: 65%;
+            padding: 40px 40px 40px 30px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+
+        .objective-text {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        /* --- TIMELINE --- */
+        .timeline {
+            border-left: 2px solid var(--line-color);
+            margin-left: 8px;
+            padding-left: 25px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            background-color: #fcfcfc;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px; 
+            top: 18px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-color);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            transform: scale(1.3);
+            background-color: var(--hover-color);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .item-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 15px;
+            max-width: 75%;
+        }
+
+        .item-date {
+            font-size: 12px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .item-subtext {
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 5px;
+            color: #555;
+        }
+
+        /* --- HIỆU ỨNG ANIMATION AN TOÀN BẰNG CSS THUẦN --- */
+        @keyframes slideUpFade {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-up {
+            opacity: 0; /* Ẩn đi lúc chưa load xong */
+            animation: slideUpFade 0.8s ease-out forwards;
+        }
+
+        /* Cài đặt độ trễ để các phần hiện ra lần lượt */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
+        .delay-4 { animation-delay: 0.7s; }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                flex-direction: column;
+            }
+            .left-column, .right-column {
+                width: 100%;
+                padding: 30px;
+                border-right: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <div class="left-column animate-up delay-1">
+            <img src="avatar.jpg" alt="Nguyễn Phương Thảo" class="avatar">
+            
+            <h1>Nguyễn Phương Thảo</h1>
+            <div class="contact-info">
+                <p><strong>Email:</strong> npthaor105@gmail.com</p>
+            </div>
+
+            <div class="section-title">EDUCATION</div>
+            <ul class="skills-list" style="list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 10px;">
+                    <span class="bold-text">University Student</span><br>
+                    Major: Business Law & International Contracts
+                </li>
+            </ul>
+
+            <div class="section-title">SKILLS</div>
+            <ul class="skills-list">
+                <li><span class="bold-text">Teamwork:</span> School study groups, clubs</li>
+                <li><span class="bold-text">Office Software:</span> Google Docs, Sheets, Microsoft Word, Excel,...</li>
+                <li><span class="bold-text">Data Analysis:</span> Python (pandas, Jupyter Lab, Google Colab)</li>
+                <li><span class="bold-text">Organization:</span> Planning and organizing events with the team.</li>
+                <li><span class="bold-text">Communication:</span> Collaborating and liaising with sponsors/partners.</li>
+            </ul>
+
+            <div class="section-title">LANGUAGES</div>
+            <ul class="skills-list">
+                <li><span class="bold-text">English:</span> IELTS 7.5 overall</li>
+                <li><span class="bold-text">Mandarin Chinese:</span> Conversational & HSKK Preparation</li>
+            </ul>
+        </div>
+
+        <div class="right-column">
+            <div class="section-title animate-up delay-2">OBJECTIVE</div>
+            <div class="objective-text animate-up delay-2">
+                My goal is to join a supportive and professional team. I believe that an open, respectful, and collaborative environment will help me reach my full potential and make a meaningful impact on the company's growth.
+            </div>
+
+            <div class="section-title animate-up delay-3">ACTIVITIES</div>
+            <div class="timeline animate-up delay-3">
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Import Intern, 4TEK Industrial Solutions Joint Stock Company</div>
+                        <div class="item-date">07/2025 - 08/2025</div>
+                    </div>
+                    <div class="item-desc">
+                        Reviewed, verified, and organized documents. Drafted correspondence using templates; assisted with partner reception and logistical tasks to ensure smooth operations.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Deputy Leader, Hawaiiu. Bracelet Business Project</div>
+                        <div class="item-date">03/2025 - 05/2025</div>
+                    </div>
+                    <div class="item-desc">
+                        Assumed the role of Deputy Leader. Co-managed the project operations, assigned tasks, and supervised the team's work quality. Directly in charge of media design and budget management.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Media Team Member, CSP Cooking Trendsetters Club</div>
+                        <div class="item-date">08/2022 - 06/2023</div>
+                    </div>
+                    <div class="item-desc">
+                        Brainstormed and designed media materials in collaboration with the content team. Coordinated culinary events and managed attendee support to ensure a professional experience.
+                    </div>
+                    <div class="item-subtext">Software used: Canva, Adobe Illustrator</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">External Relations Team Member, CSP Debate Society</div>
+                        <div class="item-date">08/2022 - 06/2023</div>
+                    </div>
+                    <div class="item-desc">
+                        Approached, negotiated with, and managed the sponsor network to ensure optimal value for partners. Planned and organized networking events and debate competitions.
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title animate-up delay-4">RESEARCH EXPERIENCE</div>
+            <div class="timeline animate-up delay-4" style="margin-bottom: 0;">
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Participate in scientific research</div>
+                        <div class="item-date">08/2025 - 04/2026</div>
+                    </div>
+                    <div class="item-desc">
+                        Participated in 2 research projects on "AI Sycophancy" and "AI Personalization". Handled the qualitative research and content comprehensively: built the theoretical framework, formulated hypotheses, interpreted data analysis results, and directly authored practical recommendations for businesses and regulatory agencies. Ensure adherence to defined <i>competence</i> frameworks.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
