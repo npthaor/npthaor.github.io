@@ -3,302 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyễn Phương Thảo | Portfolio</title>
-    <!-- Link icon của FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Link font chữ Roboto -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+    <title>CV - Nguyễn Phương Thảo</title>
     <style>
-        /* TỔNG QUAN */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f1f1f1;
-            color: #333;
-            line-height: 1.6;
-        }
-        a {
-            text-decoration: none;
-            color: #009688;
-        }
-        
-        /* BỐ CỤC CHUNG */
-        .container {
-            max-width: 1400px;
-            margin: 20px auto;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .left-col {
-            width: 33.33%;
-            padding: 0 15px;
-        }
-        .right-col {
-            width: 66.66%;
-            padding: 0 15px;
+        :root {
+            --primary-color: #552744; /* Màu tím sẫm lấy từ ảnh */
+            --bg-color: #f4f3f5; /* Màu nền xám nhạt */
+            --text-color: #333333;
+            --line-color: #552744;
         }
 
-        /* CARD TRẮNG */
-        .card {
-            background-color: #fff;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            border-radius: 4px;
-            overflow: hidden;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e6e6e6;
+            margin: 0;
+            padding: 40px 20px;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
         }
-        .padding-container {
-            padding: 20px;
-        }
-        
-        /* CỘT TRÁI - AVATAR & INFO */
-        .profile-img-container {
-            position: relative;
-        }
-        .profile-img-container img {
+
+        .resume-container {
             width: 100%;
+            max-width: 950px;
+            background-color: var(--bg-color);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .left-column {
+            width: 35%;
+            padding: 40px 30px;
+            box-sizing: border-box;
+            background-color: #f4f3f5;
+        }
+
+        /* --- ĐOẠN CSS THÊM CHO AVATAR --- */
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%; /* Cắt ảnh thành hình tròn */
+            object-fit: cover; /* Tránh làm móp méo ảnh */
+            margin-bottom: 20px;
+            border: 3px solid var(--primary-color); /* Tạo viền màu tím cùng tông CV */
             display: block;
         }
-        .name-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            color: white;
-            padding: 15px;
-        }
-        .name-overlay h2 {
-            font-weight: 400;
-            font-size: 24px;
-        }
-        .info-list p {
-            font-size: 16px;
-            margin-bottom: 12px;
-            color: #555;
-        }
-        .info-list i {
-            color: #009688;
-            margin-right: 15px;
-            font-size: 18px;
-            width: 20px;
-            text-align: center;
-        }
-        hr {
-            border: 0;
-            border-top: 1px solid #eee;
-            margin: 20px 0;
+
+        .right-column {
+            width: 65%;
+            padding: 40px 40px 40px 20px;
+            box-sizing: border-box;
         }
 
-        /* THANH KỸ NĂNG (SKILLS) */
-        .skill-title {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        .skill-title i {
-            color: #009688;
-            margin-right: 10px;
-        }
-        .skill-name {
-            font-size: 15px;
+        h1 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-top: 0;
             margin-bottom: 5px;
-            color: #555;
-        }
-        .progress-bar-bg {
-            background-color: #f1f1f1;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-        .progress-bar {
-            background-color: #009688;
-            height: 16px;
-            border-radius: 10px;
-            text-align: center;
-            color: white;
-            font-size: 12px;
-            line-height: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* CỘT PHẢI - ABOUT & PROJECTS */
+        .contact-info {
+            font-size: 14px;
+            margin-bottom: 40px;
+            color: #444;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
         .section-title {
-            font-size: 24px;
-            color: #555;
+            font-size: 18px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #009688;
-            font-weight: 400;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            font-weight: 800;
         }
-        .section-title i {
-            color: #009688;
-            margin-right: 15px;
-            font-size: 28px;
+
+        ul.skills-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 40px;
         }
-        
-        .about-text {
-            font-size: 16px;
-            color: #555;
+
+        ul.skills-list li {
             margin-bottom: 15px;
+            color: #333;
+        }
+
+        .bold-text {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .objective-text {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 40px;
             text-align: justify;
         }
 
-        .project-item {
-            margin-bottom: 25px;
+        /* Bố cục Timeline cho Kinh nghiệm và Hoạt động */
+        .timeline {
+            border-left: 2px solid var(--line-color);
+            margin-left: 8px;
+            padding-left: 25px;
+            margin-bottom: 40px;
         }
-        .project-item h3 {
-            font-size: 18px;
-            color: #333;
-            font-weight: 500;
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Bullet vuông giống thiết kế trong ảnh */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
             margin-bottom: 8px;
         }
-        .project-item h3 i {
-            color: #009688;
-            margin-right: 8px;
-        }
-        .project-item p {
-            color: #666;
+
+        .item-title {
+            font-weight: bold;
+            color: var(--primary-color);
             font-size: 15px;
+            max-width: 75%;
         }
 
-        /* FOOTER */
-        footer {
-            background-color: #009688;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 30px;
-        }
-        footer a {
-            color: white;
-            margin: 0 10px;
-            font-size: 20px;
-        }
-        footer a:hover {
-            opacity: 0.8;
+        .item-date {
+            font-size: 12px;
+            color: #666;
+            white-space: nowrap;
         }
 
-        /* RESPONSIVE CHO ĐIỆN THOẠI */
-        @media screen and (max-width: 800px) {
-            .left-col, .right-col {
+        .item-desc {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .item-subtext {
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 5px;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                flex-direction: column;
+            }
+            .left-column, .right-column {
                 width: 100%;
+                padding: 30px;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    
-    <!-- ================= CỘT TRÁI ================= -->
-    <div class="left-col">
-        <div class="card">
-            <!-- Khu vực ảnh đại diện -->
-            <div class="profile-img-container">
-                <!-- Sửa chữ avatar.jpg thành tên ảnh của bạn nếu bạn up ảnh lên -->
-                <img src="avatar.jpg" alt="Profile Picture" onerror="this.src='https://www.w3schools.com/w3images/avatar_hat.jpg'">
-                <div class="name-overlay">
-                    <h2>Nguyễn Phương Thảo</h2>
+    <div class="resume-container">
+        <div class="left-column">
+            <img src="avatar.jpg" alt="Nguyễn Phương Thảo" class="avatar">
+            
+            <h1>Nguyễn Phương Thảo</h1>
+            <div class="contact-info">
+                <p><strong>Email:</strong> npthaor105@gmail.com</p>
+            </div>
+
+            <div class="section-title">EDUCATION</div>
+            <ul class="skills-list" style="list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 10px;">
+                    <span class="bold-text">University Student</span><br>
+                    Major: Business Law & International Contracts
+                </li>
+            </ul>
+
+            <div class="section-title">SKILLS</div>
+            <ul class="skills-list">
+                <li><span class="bold-text">Teamwork:</span> School study groups, clubs</li>
+                <li><span class="bold-text">Office Software:</span> Google Docs, Sheets, Microsoft Word, Excel,...</li>
+                <li><span class="bold-text">Data Analysis:</span> Python (pandas, Jupyter Lab, Google Colab)</li>
+                <li><span class="bold-text">Organization:</span> Planning and organizing events with the team.</li>
+                <li><span class="bold-text">Communication:</span> Collaborating and liaising with sponsors/partners.</li>
+            </ul>
+
+            <div class="section-title">LANGUAGES</div>
+            <ul class="skills-list">
+                <li><span class="bold-text">English:</span> IELTS 7.5 overall</li>
+                <li><span class="bold-text">Mandarin Chinese:</span> Conversational & HSKK Preparation</li>
+            </ul>
+        </div>
+
+        <div class="right-column">
+            <div class="section-title">OBJECTIVE</div>
+            <div class="objective-text">
+                My goal is to join a supportive and professional team. I believe that an open, respectful, and collaborative environment will help me reach my full potential and make a meaningful impact on the company's growth.
+            </div>
+
+            <div class="section-title">ACTIVITIES</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Import Intern, 4TEK Industrial Solutions Joint Stock Company</div>
+                        <div class="item-date">07/2025 - 08/2025</div>
+                    </div>
+                    <div class="item-desc">
+                        Reviewed, verified, and organized documents. Drafted correspondence using templates; assisted with partner reception and logistical tasks to ensure smooth operations.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Deputy Leader, Hawaiiu. Bracelet Business Project</div>
+                        <div class="item-date">03/2025 - 05/2025</div>
+                    </div>
+                    <div class="item-desc">
+                        Assumed the role of Deputy Leader. Co-managed the project operations, assigned tasks, and supervised the team's work quality. Directly in charge of media design and budget management.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Media Team Member, CSP Cooking Trendsetters Club</div>
+                        <div class="item-date">08/2022 - 06/2023</div>
+                    </div>
+                    <div class="item-desc">
+                        Brainstormed and designed media materials in collaboration with the content team. Coordinated culinary events and managed attendee support to ensure a professional experience.
+                    </div>
+                    <div class="item-subtext">Software used: Canva, Adobe Illustrator</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">External Relations Team Member, CSP Debate Society</div>
+                        <div class="item-date">08/2022 - 06/2023</div>
+                    </div>
+                    <div class="item-desc">
+                        Approached, negotiated with, and managed the sponsor network to ensure optimal value for partners. Planned and organized networking events and debate competitions.
+                    </div>
                 </div>
             </div>
-            
-            <!-- Thông tin liên hệ & Học vấn -->
-            <div class="padding-container info-list">
-                <p><i class="fas fa-briefcase"></i>International Business Major</p>
-                <p><i class="fas fa-university"></i>Foreign Trade University</p>
-                <p><i class="fas fa-certificate"></i>IELTS: 7.5</p>
-                <p><i class="fas fa-project-diagram"></i>5+ Academic Projects</p>
-                <p><i class="fas fa-envelope"></i>your.email@example.com</p>
-                
-                <hr>
 
-                <!-- Kỹ năng (Skills) -->
-                <p class="skill-title"><i class="fas fa-asterisk"></i>Skills</p>
-                
-                <div class="skill-name">Business Screening & Market Research</div>
-                <div class="progress-bar-bg">
-                    <div class="progress-bar" style="width:90%">90%</div>
-                </div>
-
-                <div class="skill-name">English Proficiency (IELTS 7.5)</div>
-                <div class="progress-bar-bg">
-                    <div class="progress-bar" style="width:85%">85%</div>
-                </div>
-
-                <div class="skill-name">Data Analysis (Python, Pandas, Jupyter)</div>
-                <div class="progress-bar-bg">
-                    <div class="progress-bar" style="width:80%">80%</div>
-                </div>
-
-                <div class="skill-name">Administrative Precision</div>
-                <div class="progress-bar-bg">
-                    <div class="progress-bar" style="width:85%">85%</div>
-                </div>
-
-                <div class="skill-name">Mandarin Chinese (HSKK)</div>
-                <div class="progress-bar-bg">
-                    <div class="progress-bar" style="width:65%">65%</div>
+            <div class="section-title">RESEARCH EXPERIENCE</div>
+            <div class="timeline" style="margin-bottom: 0;">
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="item-title">Participate in scientific research</div>
+                        <div class="item-date">08/2025 - 04/2026</div>
+                    </div>
+                    <div class="item-desc">
+                        Participated in 2 research projects on "AI Sycophancy" and "AI Personalization". Handled the qualitative research and content comprehensively: built the theoretical framework, formulated hypotheses, interpreted data analysis results, and directly authored practical recommendations for businesses and regulatory agencies. Ensure adherence to defined <i>competence</i> frameworks.
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- ================= CỘT PHẢI ================= -->
-    <div class="right-col">
-        
-        <!-- Phần Giới thiệu (About Me) -->
-        <div class="card padding-container">
-            <h2 class="section-title"><i class="fas fa-user-circle"></i>About Me</h2>
-            <p class="about-text">
-                I have a strong passion for integrating modern technology into academic research and administrative workflows. My academic journey is driven by a desire for <b>competence</b>, precision, and discovering the balance between professional duties and personal life. 
-            </p>
-            <p class="about-text">
-                As an International Business major at Foreign Trade University, I continuously seek opportunities to apply theoretical knowledge to practical business scenarios, ranging from market entry research to data-driven analysis.
-            </p>
-        </div>
-
-        <!-- Phần Dự án (Projects) -->
-        <div class="card padding-container">
-            <h2 class="section-title"><i class="fas fa-cogs"></i>Projects & Experience</h2>
-            
-            <div class="project-item">
-                <h3><i class="fas fa-brain"></i> Academic Scientific Research on AI (1)</h3>
-                <p>Focused on the "Service Recovery Paradox" and analyzed user satisfaction with AI systems. The research heavily evaluated the competence of AI in handling service failures and included rigorous refinement of academic abstracts.</p>
-            </div>
-            
-            <div class="project-item">
-                <h3><i class="fas fa-robot"></i> Academic Scientific Research on AI (2)</h3>
-                <p>Investigated the intersection of artificial intelligence and international business operations, providing analytical insights into how technological workflows can be optimized within legal and corporate frameworks.</p>
-            </div>
-
-            <div class="project-item">
-                <h3><i class="fas fa-gem"></i> Hawaiiu. - Bracelets Selling</h3>
-                <p>Managed an entrepreneurial project focused on designing and selling handcrafted bracelets. Handled operational tasks, customer relationships, and applied administrative precision to ensure smooth business execution.</p>
-            </div>
-
-            <div class="project-item">
-                <h3><i class="fas fa-chart-line"></i> Market Entry Strategy - Chí Nguyên Company</h3>
-                <p>Conducted comprehensive business screening and researched optimal entry modes for Chí Nguyên company to successfully expand into a new international market.</p>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-    <p>Find me on social media.</p>
-    <div style="margin-top: 15px;">
-        <a href="#"><i class="fab fa-facebook-square"></i></a>
-        <a href="https://instagram.com/nguyenphuongthao"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-    </div>
-    <p style="font-size: 14px; margin-top: 15px;">© 2026 Nguyen Phuong Thao.</p>
-</footer>
 
 </body>
 </html>
