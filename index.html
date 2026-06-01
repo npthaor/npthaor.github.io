@@ -23,7 +23,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none !important; /* Ẩn chuột mặc định để dùng Custom Cursor */
         }
 
         html {
@@ -48,32 +47,6 @@
             font-weight: 600;
         }
 
-        /* --- CUSTOM CURSOR --- */
-        .cursor-dot {
-            width: 8px; height: 8px;
-            background: var(--accent-color);
-            position: fixed; top: 0; left: 0;
-            border-radius: 50%; pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s;
-        }
-        .cursor-outline {
-            width: 40px; height: 40px;
-            border: 2px solid var(--primary-color);
-            position: fixed; top: 0; left: 0;
-            border-radius: 50%; pointer-events: none;
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s, border-color 0.2s;
-        }
-        
-        /* Ẩn cursor tự tạo trên điện thoại */
-        @media screen and (max-width: 768px) {
-            * { cursor: auto !important; }
-            .cursor-dot, .cursor-outline { display: none !important; }
-        }
-
         /* --- BACKGROUND BỤI SAO LẤP LÁNH --- */
         .stars-bg {
             position: fixed;
@@ -90,30 +63,31 @@
             to { background-position: -1000px 500px; }
         }
 
-        /* --- NAVBAR --- */
+        /* --- NAVBAR (Đã thêm Gradient siêu xinh) --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.3);
+            /* Gradient trong suốt nhẹ kết hợp mờ */
+            background: linear-gradient(135deg, rgba(91, 42, 84, 0.95), rgba(212, 175, 55, 0.85));
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 8%;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 10px 30px rgba(91, 42, 84, 0.2);
         }
 
         .logo {
             font-size: 26px;
             font-weight: 800;
-            color: var(--primary-color);
+            color: var(--white);
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(255,255,255,0.8);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .nav-links {
@@ -124,7 +98,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 700;
             font-size: 14px;
             position: relative;
@@ -136,11 +110,11 @@
             position: absolute;
             width: 0; height: 2px;
             bottom: -5px; left: 0;
-            background-color: var(--accent-color);
+            background-color: var(--white);
             transition: var(--transition);
         }
 
-        .nav-links a:hover { color: var(--primary-color); }
+        .nav-links a:hover { color: var(--white); text-shadow: 0 0 10px rgba(255,255,255,0.5); }
         .nav-links a:hover::after { width: 100%; }
 
         /* --- CHUNG CHO CÁC SECTION --- */
@@ -268,7 +242,6 @@
             color: var(--primary-color);
             font-weight: 800;
             margin-bottom: 10px;
-            font-family: 'Montserrat', sans-serif;
             position: relative; z-index: 2;
         }
 
@@ -326,7 +299,7 @@
             transform: translateY(-5px); box-shadow: 0 15px 35px rgba(91, 42, 84, 0.12);
         }
 
-        /* --- CONTACT LIGHT/GLASS MODE (Tone-sur-tone) --- */
+        /* --- CONTACT LIGHT/GLASS MODE --- */
         .contact-box {
             background: rgba(255, 255, 255, 0.4); 
             backdrop-filter: blur(20px);
@@ -434,6 +407,7 @@
             border-radius: 30px; font-size: 16px; font-weight: 700;
             transition: var(--transition); margin-top: 10px;
             font-family: 'Nunito', sans-serif;
+            cursor: pointer;
         }
 
         .submit-btn:hover {
@@ -467,19 +441,15 @@
 </head>
 <body>
 
-    <!-- CUSTOM CURSOR DOM -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
     <div class="stars-bg"></div>
 
     <nav>
         <a href="#home" class="logo">Thao.</a>
         <ul class="nav-links">
-            <li><a href="#education" class="hover-target">Education</a></li>
-            <li><a href="#skills" class="hover-target">Skills</a></li>
-            <li><a href="#experience" class="hover-target">Experience</a></li>
-            <li><a href="#contact" class="hover-target">Contact</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -487,7 +457,7 @@
     <section id="home">
         <div class="avatar-container reveal">
             <div class="avatar-glow"></div>
-            <img src="avatar.jpg" alt="Nguyễn Phương Thảo" class="hero-avatar hover-target">
+            <img src="avatar.jpg" alt="Nguyễn Phương Thảo" class="hero-avatar">
         </div>
         
         <h1 class="hero-title reveal">Nguyễn Phương Thảo</h1>
@@ -505,7 +475,7 @@
     <section id="education">
         <h2 class="section-title reveal">Education</h2>
         <div class="grid-layout reveal">
-            <div class="glass-card hover-target">
+            <div class="glass-card">
                 <div class="card-title">Foreign Trade University</div>
                 <div class="card-date">2024 - Present</div>
                 <div class="card-desc">
@@ -514,7 +484,7 @@
                 </div>
             </div>
             
-            <div class="glass-card hover-target">
+            <div class="glass-card">
                 <div class="card-title">Nguyen Tat Thanh High School</div>
                 <div class="card-date">2021 - 2024</div>
                 <div class="card-desc">
@@ -529,19 +499,19 @@
     <section id="skills">
         <h2 class="section-title reveal">Professional Skills</h2>
         <div class="grid-layout reveal">
-            <div class="glass-card hover-target" style="padding: 25px;">
+            <div class="glass-card" style="padding: 25px;">
                 <div class="card-title" style="font-size: 18px;">Teamwork</div>
                 <div class="card-desc">Collaborating effectively in school study groups and various clubs.</div>
             </div>
-            <div class="glass-card hover-target" style="padding: 25px;">
+            <div class="glass-card" style="padding: 25px;">
                 <div class="card-title" style="font-size: 18px;">Office Software</div>
                 <div class="card-desc">Proficient in Google Docs, Sheets, Microsoft Word, and Excel.</div>
             </div>
-            <div class="glass-card hover-target" style="padding: 25px;">
+            <div class="glass-card" style="padding: 25px;">
                 <div class="card-title" style="font-size: 18px;">Organization</div>
                 <div class="card-desc">Experienced in planning and organizing events with teams.</div>
             </div>
-            <div class="glass-card hover-target" style="padding: 25px;">
+            <div class="glass-card" style="padding: 25px;">
                 <div class="card-title" style="font-size: 18px;">Communication</div>
                 <div class="card-desc">Skilled in collaborating and liaising with sponsors and partners.</div>
             </div>
@@ -552,21 +522,21 @@
     <section id="experience">
         <h2 class="section-title reveal">Experience</h2>
         <div class="timeline reveal">
-            <div class="timeline-item left hover-target">
+            <div class="timeline-item left">
                 <div class="timeline-content">
                     <div class="exp-title">Deputy Leader</div>
                     <div class="card-date">Hawaiiu. Bracelet Business Project | 03/2025 - 05/2025</div>
                     <div class="card-desc">Co-managed project operations, assigned tasks, and supervised team quality. Directly in charge of media design and budget management.</div>
                 </div>
             </div>
-            <div class="timeline-item right hover-target">
+            <div class="timeline-item right">
                 <div class="timeline-content">
                     <div class="exp-title">Media Team Member</div>
                     <div class="card-date">CSP Cooking Trendsetters | 08/2022 - 06/2023</div>
                     <div class="card-desc">Brainstormed and designed media materials. Coordinated culinary events and managed attendee support.</div>
                 </div>
             </div>
-            <div class="timeline-item left hover-target">
+            <div class="timeline-item left">
                 <div class="timeline-content">
                     <div class="exp-title">External Relations Member</div>
                     <div class="card-date">CSP Debate Society | 08/2022 - 06/2023</div>
@@ -581,14 +551,14 @@
         <div class="contact-box reveal">
             
             <div class="contact-left">
-                <div class="contact-badge hover-target">SAY HELLO</div>
+                <div class="contact-badge">SAY HELLO</div>
                 <!-- Chữ together giữ font Playfair và màu vàng kim cực sang -->
                 <h2>Let's work <br><span class="italic-serif" style="color: var(--accent-color);">together.</span></h2>
                 <p class="contact-desc">
                     I'm actively looking for internship opportunities. Whether you have a role in mind or just want to chat about International Business and Law — my inbox is always open.
                 </p>
                 
-                <a href="mailto:npthaor105@gmail.com" class="contact-card-link hover-target">
+                <a href="mailto:npthaor105@gmail.com" class="contact-card-link">
                     <div class="contact-icon">✉</div>
                     <div class="contact-info">
                         <span>Gmail</span>
@@ -602,17 +572,17 @@
                 <form onsubmit="event.preventDefault();">
                     <div class="input-group">
                         <label>NAME</label>
-                        <input type="text" placeholder="Jane Smith" class="hover-target">
+                        <input type="text" placeholder="Jane Smith">
                     </div>
                     <div class="input-group">
                         <label>GMAIL</label>
-                        <input type="email" placeholder="jane@company.com" class="hover-target">
+                        <input type="email" placeholder="jane@company.com">
                     </div>
                     <div class="input-group">
                         <label>MESSAGE</label>
-                        <textarea placeholder="Hi, I'd love to chat about an internship opportunity..." class="hover-target"></textarea>
+                        <textarea placeholder="Hi, I'd love to chat about an internship opportunity..."></textarea>
                     </div>
-                    <button type="submit" class="submit-btn hover-target">Send message &rarr;</button>
+                    <button type="submit" class="submit-btn">Send message &rarr;</button>
                 </form>
             </div>
 
@@ -639,42 +609,6 @@
         }
         window.addEventListener("scroll", reveal);
         reveal();
-
-        // --- CUSTOM CURSOR JAVASCRIPT ---
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        
-        window.addEventListener('mousemove', function(e) {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            
-            // Dot di chuyển lập tức
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            
-            // Vòng tròn đi theo có độ trễ tạo cảm giác mượt
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
-
-        // Hiệu ứng phình to cursor khi hover vào các thẻ có class 'hover-target'
-        const hoverTargets = document.querySelectorAll('.hover-target');
-        hoverTargets.forEach(target => {
-            target.addEventListener('mouseenter', () => {
-                cursorOutline.style.width = '60px';
-                cursorOutline.style.height = '60px';
-                cursorOutline.style.borderColor = 'var(--accent-color)';
-                cursorOutline.style.background = 'rgba(212, 175, 55, 0.1)';
-            });
-            target.addEventListener('mouseleave', () => {
-                cursorOutline.style.width = '40px';
-                cursorOutline.style.height = '40px';
-                cursorOutline.style.borderColor = 'var(--primary-color)';
-                cursorOutline.style.background = 'transparent';
-            });
-        });
     </script>
 </body>
 </html>
